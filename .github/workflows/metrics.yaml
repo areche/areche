@@ -12,6 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: left
+        if: ${{ success() || failure() }}
         uses: lowlighter/metrics@latest
         with:
           # Your GitHub token
@@ -39,6 +40,7 @@ jobs:
           config_order: base.header, base.activity+community, languages, code
 
       - name: right
+        if: ${{ success() || failure() }}
         uses: lowlighter/metrics@latest
         with:
           token: ${{ secrets.METRICS_TOKEN }}
